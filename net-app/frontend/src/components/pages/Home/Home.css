@@ -1,0 +1,64 @@
+.home-page {
+  padding: 0.5rem 0;
+}
+
+.home-page h2 {
+  color: #b6ceff;
+  font-weight: 500;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  border-left: 6px solid #f7d44a;
+  padding-left: 1rem;
+}
+
+.home-page p {
+  color: #c8d6e8;
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
+}
+
+.home-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.home-card {
+  background: #0d131c;
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid #1e2a3a;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.home-card:hover {
+  transform: translateY(-5px);
+  border-color: #2b6ef0;
+  box-shadow: 0 8px 25px rgba(43, 110, 240, 0.15);
+}
+
+.home-card-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.home-card h3 {
+  color: #b6ceff;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.home-card p {
+  color: #8ca3c9;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+@media (max-width: 680px) {
+  .home-cards {
+    grid-template-columns: 1fr;
+  }
+}

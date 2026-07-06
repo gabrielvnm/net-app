@@ -1,0 +1,42 @@
+/* footer */
+.app-footer {
+    border-top: 1px solid #1e2a3a;
+    padding: 1.2rem 0.5rem 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    color: #7f96b3;
+    font-size: 0.9rem;
+    margin-top: 0.4rem;
+}
+
+.app-footer .copyright {
+    color: #6b84a5;
+}
+
+.app-footer .brand {
+    color: #b6ceff;
+}
+
+.app-footer .contact a {
+    color: #5f8bdd;
+    text-decoration: none;
+    border-bottom: 1px dotted #2c4a7a;
+    margin-left: 0.8rem;
+    transition: color 0.2s;
+}
+
+.app-footer .contact a:hover {
+    color: #f7d44a;
+    border-bottom-color: #f7d44a;
+}
+
+.app-footer .contact span {
+    margin-right: 0.5rem;
+    color: #8ba3c7;
+}
+
+.app-footer .phone-icon {
+    margin-left: 0.8rem;
+}

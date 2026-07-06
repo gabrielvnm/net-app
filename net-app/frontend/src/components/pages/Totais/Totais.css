@@ -1,0 +1,369 @@
+/* Totais Page */
+.totais-page {
+  /* Inherits from main-content */
+}
+
+.totais-page h2 {
+  color: #b6ceff;
+  font-weight: 500;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  border-left: 6px solid #f7d44a;
+  padding-left: 1rem;
+  letter-spacing: -0.3px;
+}
+
+.totais-page p {
+  color: #c8d6e8;
+  margin: 1rem 0 0.5rem;
+  font-size: 1.05rem;
+}
+
+.highlight {
+  color: #f7d44a;
+  font-weight: 450;
+}
+
+/* Summary Cards */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.panel-card {
+  background: #0d131c;
+  border-radius: 16px;
+  padding: 1.2rem 1.6rem;
+  border-left: 3px solid #2b6ef0;
+}
+
+.card-label {
+  color: #8ca3c9;
+  font-size: 0.85rem;
+}
+
+.card-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.card-receita {
+  border-left-color: #00c853;
+}
+
+.card-value-receita {
+  color: #00c853;
+}
+
+.card-despesa {
+  border-left-color: #ff1744;
+}
+
+.card-value-despesa {
+  color: #ff1744;
+}
+
+.card-saldo-positivo {
+  border-left-color: #f7d44a;
+}
+
+.card-saldo-negativo {
+  border-left-color: #ff1744;
+}
+
+.card-value-positivo {
+  color: #f7d44a;
+}
+
+.card-value-negativo {
+  color: #ff1744;
+}
+
+.card-total {
+  border-left-color: #6ba3ff;
+}
+
+.card-value-total {
+  color: #6ba3ff;
+}
+
+/* Transactions Container */
+.transactions-container {
+  margin-top: 1.5rem;
+  background: #0d131c;
+  border-radius: 12px;
+  border: 1px solid #1e2a3a;
+  overflow: hidden;
+}
+
+.transactions-header {
+  padding: 1rem;
+  background: #141a22;
+  border-bottom: 2px solid #1e2a3a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.transactions-title {
+  color: #e0e8f0;
+  font-weight: 500;
+}
+
+.transactions-count {
+  color: #8ca3c9;
+  font-size: 0.85rem;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+/* Transactions Table */
+.transactions-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #c8d6e8;
+}
+
+.transactions-table thead tr {
+  background: #141a22;
+  border-bottom: 1px solid #1e2a3a;
+}
+
+.transactions-table th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  color: #8ca3c9;
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.transactions-table td {
+  padding: 0.75rem 1rem;
+}
+
+.table-row {
+  border-bottom: 1px solid #1a222e;
+  transition: background 0.15s;
+}
+
+.table-row-last {
+  transition: background 0.15s;
+}
+
+.table-row:hover,
+.table-row-last:hover {
+  background: #141a22;
+}
+
+/* Transaction specific styles */
+.transaction-id {
+  color: #6ba3ff;
+  font-weight: 500;
+}
+
+.transaction-description {
+  color: #e0e8f0;
+}
+
+.transaction-value {
+  font-weight: 500;
+}
+
+.value-receita {
+  color: #00c853;
+}
+
+.value-despesa {
+  color: #ff1744;
+}
+
+.transaction-user {
+  color: #b6ceff;
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.badge-receita {
+  background: #1a3a1a;
+  color: #00c853;
+}
+
+.badge-despesa {
+  background: #3a1a1a;
+  color: #ff1744;
+}
+
+/* Utilities */
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+/* Add to existing Totais.css */
+
+/* Filters Container */
+.filters-container {
+  background: #0d131c;
+  border-radius: 12px;
+  border: 1px solid #1e2a3a;
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.filters-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #1e2a3a;
+}
+
+.filters-title {
+  color: #b6ceff;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.btn-clear-filters {
+  padding: 0.3rem 1rem;
+  background: transparent;
+  border: 1px solid #2d5aa0;
+  border-radius: 6px;
+  color: #8ca3c9;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.btn-clear-filters:hover {
+  background: #1f2a3a;
+  color: #b6ceff;
+  border-color: #2b6ef0;
+}
+
+.filters-row {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+  min-width: 150px;
+}
+
+.filter-group label {
+  color: #8ca3c9;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.filter-select {
+  padding: 0.5rem 0.8rem;
+  background: #0b0d10;
+  border: 1px solid #1e2a3a;
+  border-radius: 8px;
+  color: #e0e8f0;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.filter-select:hover {
+  border-color: #2d5aa0;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: #2b6ef0;
+  box-shadow: 0 0 0 3px rgba(43, 110, 240, 0.15);
+}
+
+.filter-results {
+  display: flex;
+  align-items: center;
+  padding-top: 0.3rem;
+}
+
+.results-badge {
+  padding: 0.3rem 1rem;
+  background: #141a22;
+  border-radius: 20px;
+  color: #8ca3c9;
+  font-size: 0.85rem;
+  border: 1px solid #1e2a3a;
+}
+
+.no-results {
+  text-align: center;
+  padding: 2rem;
+  color: #8ca3c9;
+  font-style: italic;
+}
+
+
+/* Responsive */
+@media (max-width: 680px) {
+  .summary-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .transactions-table {
+    font-size: 0.85rem;
+  }
+  
+  .transactions-table th,
+  .transactions-table td {
+    padding: 0.5rem 0.6rem;
+  }
+  
+  .badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .filters-container {
+    padding: 1rem;
+  }
+  
+  .filters-row {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .filter-group {
+    min-width: unset;
+    width: 100%;
+  }
+  
+  .filter-results {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .filters-header {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+}
