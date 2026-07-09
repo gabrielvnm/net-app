@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using netApp.Models;
 using netApp.DTOs;
+using netApp.Services;
 
 namespace netApp.Controllers;
 
@@ -8,36 +9,50 @@ namespace netApp.Controllers;
 [Route("api/transactions")]
 public class TransactionController : ControllerBase
 {
-    private static List<Transaction> _transactions = new List<Transaction>();
-    private static int _nextTransactionId = 1;
+    private readonly ITransactionService _transactionService;
+    private readonly IUserService _userService;
 
-    // GET all: api/transactions - 
-    [HttpGet]
-    public IActionResult GetAllTransactions()
+    public TransactionController(ITransactionService transactionService, IUserService userService)
     {
-        var result = _transactions.Select(t => new TransactionResponseDto
+        _transactionService = transactionService;
+        _userService = userService;
+    }
+
+    // GET: api/transactions
+    [HttpGet]
+    public async Task<IActionResult> GetAllTransactions([FromQuery] int? userId, [FromQuery] TransactionType? type)
+    {
+        var transactions = await _transactionService.GetAllTransactionsAsync(userId, type);
+        
+        var result = new List<TransactionResponseDto>();
+        foreach (var t in transactions)
         {
-            Id = t.Id,
-            Description = t.Description,
-            Value = t.Value,
-            Type = t.Type,
-            UserId = t.UserId,
-            UserName = GetUserName(t.UserId)
-        });
+            var user = await _userService.GetUserByIdAsync(t.UserId);
+            result.Add(new TransactionResponseDto
+            {
+                Id = t.Id,
+                Description = t.Description,
+                Value = t.Value,
+                Type = t.Type,
+                UserId = t.UserId,
+                UserName = user?.Name ?? "Unknown User"
+            });
+        }
 
         return Ok(result);
     }
 
-    // GET one: api/transactions/{id}
+    // GET: api/transactions/{id}
     [HttpGet("{id}")]
-    public IActionResult GetTransactionById(int id)
+    public async Task<IActionResult> GetTransactionById(int id)
     {
-        var transaction = _transactions.FirstOrDefault(t => t.Id == id);
+        var transaction = await _transactionService.GetTransactionByIdAsync(id);
         if (transaction == null)
         {
             return NotFound(new { message = $"Transaction with ID {id} not found" });
         }
 
+        var user = await _userService.GetUserByIdAsync(transaction.UserId);
         var result = new TransactionResponseDto
         {
             Id = transaction.Id,
@@ -45,7 +60,7 @@ public class TransactionController : ControllerBase
             Value = transaction.Value,
             Type = transaction.Type,
             UserId = transaction.UserId,
-            UserName = GetUserName(transaction.UserId)
+            UserName = user?.Name ?? "Unknown User"
         };
 
         return Ok(result);
@@ -53,36 +68,17 @@ public class TransactionController : ControllerBase
 
     // POST: api/transactions
     [HttpPost]
-    public IActionResult CreateTransaction([FromBody] TransactionCreateDto transactionDto)
+    public async Task<IActionResult> CreateTransaction([FromBody] TransactionCreateDto transactionDto)
     {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-        if (!transactionDto.Type.HasValue || !Enum.IsDefined(typeof(TransactionType), transactionDto.Type.Value))
-        {
-            return BadRequest(new { 
-                type = new[] { "Invalid transaction type. Must be 'Receita' or 'Despesa'" } 
-            });
-        }
-
-        var userExists = UserController.GetUserByIdStatic(transactionDto.UserId);
-        if (userExists == null)
+        var userExists = await _userService.UserExistsAsync(transactionDto.UserId);
+        if (!userExists)
         {
             return BadRequest(new { message = $"User with ID {transactionDto.UserId} not found" });
         }
 
-        var newTransaction = new Transaction
-        {
-            Id = _nextTransactionId++,
-            Description = transactionDto.Description,
-            Value = transactionDto.Value,
-            Type = transactionDto.Type.Value,
-            UserId = transactionDto.UserId
-        };
+        var newTransaction = await _transactionService.CreateTransactionAsync(transactionDto);
 
-        _transactions.Add(newTransaction);
-
+        var user = await _userService.GetUserByIdAsync(newTransaction.UserId);
         var result = new TransactionResponseDto
         {
             Id = newTransaction.Id,
@@ -90,7 +86,7 @@ public class TransactionController : ControllerBase
             Value = newTransaction.Value,
             Type = newTransaction.Type,
             UserId = newTransaction.UserId,
-            UserName = GetUserName(newTransaction.UserId)
+            UserName = user?.Name ?? "Unknown User"
         };
 
         return CreatedAtAction(
@@ -98,27 +94,5 @@ public class TransactionController : ControllerBase
             new { id = newTransaction.Id }, 
             result
         );
-    }
-
-    // Helper 
-    private string GetUserName(int userId)
-    {
-        var user = UserController.GetUserByIdStatic(userId);
-        return user?.Name ?? "Unknown User";
-    }
-
-    // cascade delete
-    public static void DeleteTransactionStatic(int transactionId)
-    {
-        var transaction = _transactions.FirstOrDefault(t => t.Id == transactionId);
-        if (transaction != null)
-        {
-            _transactions.Remove(transaction);
-        }
-    }
-
-    public static List<Transaction> GetTransactionsByUserStatic(int userId)
-    {
-        return _transactions.Where(t => t.UserId == userId).ToList();
     }
 }

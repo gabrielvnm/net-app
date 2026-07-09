@@ -6,7 +6,7 @@ interface UseTransactionFormProps {
   onSubmit: (data: {
     description: string;
     value: number;
-    type: 'receita' | 'despesa';
+    type: 'Receita' | 'Despesa';  
     userId: number;
   }) => void;
 }
@@ -14,11 +14,13 @@ interface UseTransactionFormProps {
 export function useTransactionForm({ users, onSubmit }: UseTransactionFormProps) {
   const [descricao, setDescricao] = useState('');
   const [valor, setValor] = useState('');
-  const [tipo, setTipo] = useState<'receita' | 'despesa'>('receita');
-  const [usuarioId, setUsuarioId] = useState<number>(users[0]?.id || 0);
+  const [tipo, setTipo] = useState<'Receita' | 'Despesa'>('Despesa');  // Changed to uppercase
+  const [usuarioId, setUsuarioId] = useState<number>(() => {
+    return Array.isArray(users) && users.length > 0 ? users[0].id : 0;
+  });
   const [showSuccess, setShowSuccess] = useState(false);
-
-  const selectedUser = users.find(u => u.id === usuarioId);
+  const userArray = Array.isArray(users) ? users : [];
+  const selectedUser = userArray.find(u => u.id === usuarioId);
   const isUnder18 = selectedUser ? selectedUser.age < 18 : false;
 
   const validateForm = () => {
@@ -33,12 +35,12 @@ export function useTransactionForm({ users, onSubmit }: UseTransactionFormProps)
       return false;
     }
 
-    if (!usuarioId) {
+    if (!usuarioId || usuarioId === 0) {
       alert('Por favor, selecione um usuário.');
       return false;
     }
 
-    if (isUnder18 && tipo === 'receita') {
+    if (isUnder18 && tipo === 'Receita') {  // Changed to uppercase
       alert('Usuários menores de 18 anos só podem registrar despesas.');
       return false;
     }
@@ -71,17 +73,17 @@ export function useTransactionForm({ users, onSubmit }: UseTransactionFormProps)
   const resetForm = () => {
     setDescricao('');
     setValor('');
-    setTipo('receita');
-    setUsuarioId(users[0]?.id || 0);
+    setTipo('Despesa');  // Changed to uppercase
+    setUsuarioId(Array.isArray(users) && users.length > 0 ? users[0].id : 0);
   };
 
   const handleUserChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const userId = Number(e.target.value);
     setUsuarioId(userId);
     
-    const user = users.find(u => u.id === userId);
+    const user = userArray.find(u => u.id === userId);
     if (user && user.age < 18) {
-      setTipo('despesa');
+      setTipo('Despesa');  // Changed to uppercase
     }
   };
 

@@ -1,5 +1,11 @@
 import { useState } from 'react';
 import type { User } from '../../types';
+import {
+  validateUserForm,
+  formatUserData,
+  getInitialFormState,
+  getFormTitle
+} from './helpers';
 import './FormUsuario.css';
 
 interface FormUsuarioProps {
@@ -14,57 +20,47 @@ export function FormUsuario({ onUserAdded }: FormUsuarioProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!nome.trim() || !dataNascimento) {
-      alert('Por favor, preencha todos os campos.');
+    const error = validateUserForm(nome, dataNascimento);
+    if (error) {
+      alert(error);
       return;
     }
 
-    // Calculate age from birth date
-    const birthDate = new Date(dataNascimento);
-    const today = new Date();
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const monthDiff = today.getMonth() - birthDate.getMonth();
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-      age--;
-    }
-
-    // Create user data
-    const userData = {
-      fullName: nome.trim(),
-      age: age
-    };
-
-    // Call the parent handler
+    const userData = formatUserData(nome, dataNascimento);
     onUserAdded(userData);
 
     setFormSubmitted(true);
     
     setTimeout(() => {
-      setNome('');
-      setDataNascimento('');
+      const initialState = getInitialFormState();
+      setNome(initialState.nome);
+      setDataNascimento(initialState.dataNascimento);
       setFormSubmitted(false);
     }, 3000);
   };
 
   const handleCancel = () => {
-    setNome('');
-    setDataNascimento('');
+    const initialState = getInitialFormState();
+    setNome(initialState.nome);
+    setDataNascimento(initialState.dataNascimento);
     setFormSubmitted(false);
   };
+
+  const formTexts = getFormTitle(false);
 
   return (
     <div className="form-container form-active">
       <div className="form-header">
-        <h3>➕ Adicionar Novo Usuário</h3>
-        <span className="form-subtitle">Preencha os dados abaixo para cadastrar um novo usuário</span>
+        <h3>{formTexts.title}</h3>
+        <span className="form-subtitle">{formTexts.subtitle}</span>
       </div>
       
       {formSubmitted ? (
         <div className="form-success">
           <span className="success-icon">✅</span>
           <div className="success-content">
-            <strong>Usuário cadastrado com sucesso!</strong>
-            <p>O usuário {nome} foi adicionado à lista.</p>
+            <strong>{formTexts.successMessage}</strong>
+            <p>O usuário {nome} foi {formTexts.successDetail} à lista.</p>
           </div>
         </div>
       ) : (
@@ -106,10 +102,10 @@ export function FormUsuario({ onUserAdded }: FormUsuarioProps) {
 
           <div className="form-actions">
             <button type="submit" className="btn btn-primary">
-              💾 Salvar Usuário
+              {formTexts.submitButtonText}
             </button>
             <button type="button" className="btn btn-secondary" onClick={handleCancel}>
-              🗑️ Limpar Campos
+              {formTexts.cancelButtonText}
             </button>
           </div>
         </form>

@@ -1,3 +1,7 @@
+using netApp.Services;
+using Microsoft.EntityFrameworkCore;
+using netApp.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options =>
@@ -11,12 +15,16 @@ builder.Services.AddCors(options =>
         });
 });
 
-// Add services for Controllers - NO global enum converter
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ITransactionService, TransactionService>();
+
 builder.Services.AddControllers();
 
-// Add Swagger services
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 

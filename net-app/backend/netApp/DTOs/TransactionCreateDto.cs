@@ -18,7 +18,7 @@ public class TransactionCreateDto
     [Required(ErrorMessage = "Transaction type is required")]
     [EnumDataType(typeof(TransactionType), ErrorMessage = "Invalid transaction type. Must be 'Receita' or 'Despesa'")]
     [JsonConverter(typeof(JsonStringEnumConverter))]
-    public TransactionType? Type { get; set; }
+    public TransactionType Type { get; set; }
     
     [Required(ErrorMessage = "User ID is required")]
     [Range(1, int.MaxValue, ErrorMessage = "User ID must be greater than 0")]
