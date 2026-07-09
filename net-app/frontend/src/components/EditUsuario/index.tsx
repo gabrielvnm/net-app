@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
 import type { User } from '../../types';
 import {
-  calculateAge,
   validateUserForm,
-  formatUserData,
   getFormTitle
 } from '../FormUsuario/helpers';
 import './EditUsuario.css';
@@ -19,15 +17,10 @@ export function EditUsuario({ user, onUserUpdated, onCancel }: EditUsuarioProps)
   const [dataNascimento, setDataNascimento] = useState('');
   const [formSubmitted, setFormSubmitted] = useState(false);
 
-  // Pre-fill form with user data
   useEffect(() => {
     if (user) {
       setNome(user.fullName);
-      // Calculate approximate birth date from age
-      const today = new Date();
-      const birthYear = today.getFullYear() - user.age;
-      const birthDate = new Date(birthYear, 0, 1);
-      setDataNascimento(birthDate.toISOString().split('T')[0]);
+      setDataNascimento(user.dateOfBirth);
     }
   }, [user]);
 
@@ -40,7 +33,11 @@ export function EditUsuario({ user, onUserUpdated, onCancel }: EditUsuarioProps)
       return;
     }
 
-    const userData = formatUserData(nome, dataNascimento);
+    const userData = {
+      fullName: nome.trim(),
+      dateOfBirth: dataNascimento
+    };
+    
     onUserUpdated(user.id, userData);
 
     setFormSubmitted(true);

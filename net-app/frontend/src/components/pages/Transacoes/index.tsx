@@ -8,7 +8,7 @@ import './Transacoes.css';
 
 export default function Transacoes() {
 
-  console.log('🏗️ Transacoes component INSTANCE created');
+  
   const location = useLocation();
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
@@ -16,24 +16,17 @@ export default function Transacoes() {
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   useEffect(() => {
-    console.log('🔄 useEffect running - location changed to:', location.pathname);
     loadUsers();
-    
     return () => {
       console.log('🧹 Cleaning up Transacoes component');
     };
   }, [location.pathname]);
 
   const loadUsers = async () => {
-    const startTime = Date.now();
-    console.log(`🟢 Transacoes loadUsers START at ${startTime}`);
-    
     setLoading(true);
     setError(null);
     try {
       const usersData = await userService.getUsers();
-      const endTime = Date.now();
-      console.log(`✅ Transacoes loadUsers COMPLETE at ${endTime} (took ${endTime - startTime}ms)`);
       setUsers(Array.isArray(usersData) ? usersData : []);
     } catch (err) {
       console.log(`❌ Transacoes loadUsers FAILED`);
@@ -44,8 +37,6 @@ export default function Transacoes() {
     }
   };
 
-
-  // Handle form submission
   const handleSubmit = async (data: Omit<Transaction, 'id'>) => {
     setError(null);
     setSuccessMessage(null);
@@ -63,15 +54,11 @@ export default function Transacoes() {
     }
   };
 
-  
-  console.log('📊 Before useTransactionForm - users:', users, 'length:', users.length);
-  // Initialize form with users
   const form = useTransactionForm({
     users: Array.isArray(users) ? users : [],
     onSubmit: handleSubmit
   });
 
-  // Show loading state
   if (loading) {
     return (
       <section className="transacoes-page">
@@ -80,22 +67,7 @@ export default function Transacoes() {
       </section>
     );
   }
-
-  // Add this before the return
-  console.log('🔍 DEBUG - Transacoes rendering:');
-  console.log('  users:', users);
-  console.log('  users length:', users.length);
-  console.log('  loading:', loading);
-  console.log('  error:', error);
-  console.log('  form values:', {
-    descricao: form.descricao,
-    valor: form.valor,
-    tipo: form.tipo,
-    usuarioId: form.usuarioId,
-    isUnder18: form.isUnder18,
-    selectedUser: form.selectedUser
-  });
-  // Show error state
+  
   if (error) {
     return (
       <section className="transacoes-page">
@@ -111,17 +83,12 @@ export default function Transacoes() {
     );
   }
 
-  console.log('🎨 Rendering Transacoes component');
-  console.log('🔍 Final render - form-container classes:', 
-  document.querySelector('.form-container')?.className
-  );
   return (
     
     <section className="transacoes-page">
       <h2>💳 Transações</h2>
       <p>Adicione receitas ou despesas para os usuários</p>
 
-      {/* Success Message */}
       {successMessage && (
         <div className="success-message">
           <span className="success-icon">✅</span>
@@ -130,7 +97,7 @@ export default function Transacoes() {
         </div>
       )}
 
-      {/* Form */}
+      {/* Formulario */}
       <div className="transacao-form-container">
         <div className="form-header">
           <h3>📝 Nova Transação</h3>
@@ -230,7 +197,6 @@ export default function Transacoes() {
           </div>
         </form>
       </div>
-    </section>
-    
+    </section> 
   );
 }

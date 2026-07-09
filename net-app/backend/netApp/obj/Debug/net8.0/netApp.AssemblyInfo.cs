@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("netApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+15517d69a4ed4c720f66254429c0e86f0af199ce")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3b307bdfb9f6d90f736df6c7f46c86bcea644159")]
 [assembly: System.Reflection.AssemblyProductAttribute("netApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("netApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

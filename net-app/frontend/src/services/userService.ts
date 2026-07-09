@@ -5,6 +5,7 @@ import type { User } from '../types';
 const mapUser = (user: any): User => ({
   id: user.id,
   fullName: user.name,
+  dateOfBirth: user.dateOfBirth ? user.dateOfBirth.split('T')[0] : '',
   age: user.age
 });
 
@@ -17,20 +18,22 @@ export const userService = {
   
   // POST /users 
   createUser: (userData: Omit<User, 'id'>) => 
-    api.post<any>('/users', { name: userData.fullName, age: userData.age }).then(mapUser),
-  
-  // PATCH user
+    api.post<any>('/users', { 
+      name: userData.fullName, 
+      dateOfBirth: userData.dateOfBirth 
+    }).then(mapUser),
+
+  // PATCH user/{id}
   updateUser: (id: number, userData: Omit<User, 'id'>) =>
-    api.patch<any>(`/users/${id}`, { name: userData.fullName, age: userData.age })
-      .then(data => {
-        if (!data || typeof data !== 'object' || Object.keys(data).length === 0) {
-          return {
-            id,
-            ...userData
-          } as User;
-        }
-        return mapUser(data);
-      }),
+    api.patch<any>(`/users/${id}`, { 
+      name: userData.fullName, 
+      dateOfBirth: userData.dateOfBirth 
+    }).then(data => {
+      if (!data || typeof data !== 'object' || Object.keys(data).length === 0) {
+        return { id, ...userData } as User;
+      }
+      return mapUser(data);
+    }),
   
   // DELETE /users/{id}
   deleteUser: (id: number) => api.delete(`/users/${id}`),

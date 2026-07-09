@@ -17,15 +17,13 @@ public class AppDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        // Configure User entity
         modelBuilder.Entity<User>(entity =>
         {
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
-            entity.Property(e => e.Age).IsRequired();
+            entity.Property(e => e.DateOfBirth).IsRequired();
         });
 
-        // Configure Transaction entity
         modelBuilder.Entity<Transaction>(entity =>
         {
             entity.HasKey(e => e.Id);
@@ -33,7 +31,6 @@ public class AppDbContext : DbContext
             entity.Property(e => e.Value).IsRequired().HasColumnType("decimal(18,2)");
             entity.Property(e => e.Type).IsRequired();
             
-            // Configure the relationship with User
             entity.HasOne(t => t.User)
                   .WithMany(u => u.Transactions)
                   .HasForeignKey(t => t.UserId)

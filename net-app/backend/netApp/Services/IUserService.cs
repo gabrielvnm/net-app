@@ -5,8 +5,8 @@ namespace netApp.Services;
 
 public interface IUserService
 {
-    Task<IEnumerable<User>> GetAllUsersAsync();
-    Task<User?> GetUserByIdAsync(int id);
+    Task<IEnumerable<UserResponseDto>> GetAllUsersAsync();
+    Task<UserResponseDto?> GetUserByIdAsync(int id);
     Task<User> CreateUserAsync(UserCreateDto userDto);
     Task<User?> UpdateUserAsync(int id, UserUpdateDto userDto);
     Task<bool> DeleteUserAsync(int id);

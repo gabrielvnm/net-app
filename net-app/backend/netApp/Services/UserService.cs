@@ -14,14 +14,31 @@ public class UserService : IUserService
         _context = context;
     }
 
-    public async Task<IEnumerable<User>> GetAllUsersAsync()
+    public async Task<IEnumerable<UserResponseDto>> GetAllUsersAsync()
     {
-        return await _context.Users.ToListAsync();
+        return await _context.Users
+            .Select(u => new UserResponseDto
+            {
+                Id = u.Id,
+                Name = u.Name,
+                DateOfBirth = u.DateOfBirth,
+                Age = u.Age  // Using the computed property
+            })
+            .ToListAsync();
     }
 
-    public async Task<User?> GetUserByIdAsync(int id)
+    public async Task<UserResponseDto?> GetUserByIdAsync(int id)
     {
-        return await _context.Users.FindAsync(id);
+        var user = await _context.Users.FindAsync(id);
+        if (user == null) return null;
+        
+        return new UserResponseDto
+        {
+            Id = user.Id,
+            Name = user.Name,
+            DateOfBirth = user.DateOfBirth,
+            Age = user.Age
+        };
     }
 
     public async Task<User> CreateUserAsync(UserCreateDto userDto)
@@ -29,7 +46,7 @@ public class UserService : IUserService
         var newUser = new User
         {
             Name = userDto.Name,
-            Age = userDto.Age
+            DateOfBirth = userDto.DateOfBirth
         };
 
         await _context.Users.AddAsync(newUser);
@@ -38,6 +55,7 @@ public class UserService : IUserService
         return newUser;
     }
 
+    // Changed: Update with DateOfBirth
     public async Task<User?> UpdateUserAsync(int id, UserUpdateDto userDto)
     {
         var existingUser = await _context.Users.FindAsync(id);
@@ -51,15 +69,16 @@ public class UserService : IUserService
             existingUser.Name = userDto.Name;
         }
 
-        if (userDto.Age.HasValue)
+        if (userDto.DateOfBirth.HasValue)
         {
-            existingUser.Age = userDto.Age.Value;
+            existingUser.DateOfBirth = userDto.DateOfBirth.Value;
         }
 
         await _context.SaveChangesAsync();
         return existingUser;
     }
 
+    // Delete method remains the same
     public async Task<bool> DeleteUserAsync(int id)
     {
         var user = await _context.Users.FindAsync(id);

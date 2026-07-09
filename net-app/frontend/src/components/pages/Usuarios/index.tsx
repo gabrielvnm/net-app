@@ -41,27 +41,16 @@ export default function Usuarios() {
     }
   };
 
-const handleUpdateUser = async (id: number, userData: Omit<User, 'id'>) => {
-  console.log('🔄 handleUpdateUser called with id:', id, 'data:', userData);
-  try {
-    await userService.updateUser(id, userData);
-    console.log('✅ Update successful');
-    await loadUsers();
-    setEditingUser(null);
-  } catch (error) {
-    console.error('❌ Failed to update user:', error);
-    // Check if it's the JSON parse error
-    if (error instanceof SyntaxError && error.message.includes('JSON.parse')) {
-      // The update likely succeeded but the server returned an empty response
-      console.log('⚠️ Server returned empty response, but update might have succeeded');
+  const handleUpdateUser = async (id: number, userData: Omit<User, 'id'>) => {
+    try {
+      await userService.updateUser(id, userData);
       await loadUsers();
       setEditingUser(null);
-      alert('Usuário atualizado com sucesso!');
-    } else {
+    } catch (error) {
+      console.error('Failed to update user:', error);
       alert('Erro ao atualizar usuário');
     }
-  }
-};
+  };
 
   const handleDeleteUser = async (id: number) => {
     if (window.confirm('Tem certeza que deseja excluir este usuário?')) {
@@ -77,7 +66,7 @@ const handleUpdateUser = async (id: number, userData: Omit<User, 'id'>) => {
 
   const handleEditUser = (user: User) => {
     setEditingUser(user);
-    setShowAddForm(false); // Close add form if open
+    setShowAddForm(false);
   };
 
   const handleCancelEdit = () => {
@@ -89,7 +78,7 @@ const handleUpdateUser = async (id: number, userData: Omit<User, 'id'>) => {
       setShowAddForm(false);
     } else {
       setShowAddForm(true);
-      setEditingUser(null); // Close edit form if open
+      setEditingUser(null);
     }
   };
 
@@ -106,7 +95,6 @@ const handleUpdateUser = async (id: number, userData: Omit<User, 'id'>) => {
       </div>
       <p>Listagem, adicionar, remover ou editar usuários.</p>
 
-      {/* Add Form - at the top */}
       {showAddForm && <FormUsuario onUserAdded={handleAddUser} />}
 
       {loading && <p>Carregando usuários...</p>}
@@ -135,7 +123,7 @@ const handleUpdateUser = async (id: number, userData: Omit<User, 'id'>) => {
                   <tr key={user.id}>
                     <td>#{user.id}</td>
                     <td>{user.fullName}</td>
-                    <td>{user.age} anos</td>
+                    <td>{user.age} anos</td>  {/* age is calculated by backend */}
                     <td>
                       <button 
                         onClick={() => handleEditUser(user)} 
@@ -160,7 +148,6 @@ const handleUpdateUser = async (id: number, userData: Omit<User, 'id'>) => {
             <p>Nenhum usuário cadastrado.</p>
           )}
 
-          {/* Edit Form - below the user list */}
           {editingUser && (
             <EditUsuario 
               user={editingUser}

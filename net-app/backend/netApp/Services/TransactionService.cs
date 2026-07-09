@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using netApp.Data;
 using netApp.Models;
 using netApp.DTOs;
+using netApp.Helpers;
 
 namespace netApp.Services;
 
@@ -38,6 +39,23 @@ public class TransactionService : ITransactionService
 
     public async Task<Transaction> CreateTransactionAsync(TransactionCreateDto transactionDto)
     {
+        var user = await _context.Users.FindAsync(transactionDto.UserId);
+        if (user == null)
+        {
+            throw new InvalidOperationException("User not found");
+        }
+
+        if (transactionDto.Type == TransactionType.Receita)
+        {
+            var age = AgeHelper.CalculateAge(user.DateOfBirth);
+            if (age < 18)
+            {
+                throw new InvalidOperationException(
+                    "Usuários menores de 18 anos não podem registrar receitas."
+                );
+            }
+        }
+
         var newTransaction = new Transaction
         {
             Description = transactionDto.Description,

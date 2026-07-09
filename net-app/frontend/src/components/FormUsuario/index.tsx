@@ -2,7 +2,6 @@ import { useState } from 'react';
 import type { User } from '../../types';
 import {
   validateUserForm,
-  formatUserData,
   getInitialFormState,
   getFormTitle
 } from './helpers';
@@ -26,7 +25,12 @@ export function FormUsuario({ onUserAdded }: FormUsuarioProps) {
       return;
     }
 
-    const userData = formatUserData(nome, dataNascimento);
+    // Send date directly - backend calculates age
+    const userData = {
+      fullName: nome.trim(),
+      dateOfBirth: dataNascimento
+    };
+    
     onUserAdded(userData);
 
     setFormSubmitted(true);

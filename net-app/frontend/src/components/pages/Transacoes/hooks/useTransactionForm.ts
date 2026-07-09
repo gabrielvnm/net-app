@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { User } from '../../../../types';
 
 interface UseTransactionFormProps {
@@ -11,17 +11,42 @@ interface UseTransactionFormProps {
   }) => void;
 }
 
+const calculateAge = (dateOfBirth: string): number => {
+  const birthDate = new Date(dateOfBirth);
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  return age;
+};
+
 export function useTransactionForm({ users, onSubmit }: UseTransactionFormProps) {
   const [descricao, setDescricao] = useState('');
   const [valor, setValor] = useState('');
-  const [tipo, setTipo] = useState<'Receita' | 'Despesa'>('Despesa');  // Changed to uppercase
-  const [usuarioId, setUsuarioId] = useState<number>(() => {
-    return Array.isArray(users) && users.length > 0 ? users[0].id : 0;
-  });
+  const [tipo, setTipo] = useState<'Receita' | 'Despesa'>('Despesa');
+  const [usuarioId, setUsuarioId] = useState<number>(0);
   const [showSuccess, setShowSuccess] = useState(false);
+
+  // Update usuarioId when users array changes
+  useEffect(() => {
+    const userArray = Array.isArray(users) ? users : [];
+    if (userArray.length > 0) {
+      const currentUserExists = userArray.some(u => u.id === usuarioId);
+      if (!currentUserExists || usuarioId === 0) {
+        setUsuarioId(userArray[0].id);
+      }
+    } else {
+      setUsuarioId(0);
+    }
+  }, [users, usuarioId]);
+
   const userArray = Array.isArray(users) ? users : [];
   const selectedUser = userArray.find(u => u.id === usuarioId);
-  const isUnder18 = selectedUser ? selectedUser.age < 18 : false;
+  
+  // Calculate age from dateOfBirth
+  const isUnder18 = selectedUser ? calculateAge(selectedUser.dateOfBirth) < 18 : false;
 
   const validateForm = () => {
     if (!descricao.trim()) {
@@ -40,7 +65,7 @@ export function useTransactionForm({ users, onSubmit }: UseTransactionFormProps)
       return false;
     }
 
-    if (isUnder18 && tipo === 'Receita') {  // Changed to uppercase
+    if (isUnder18 && tipo === 'Receita') {
       alert('Usuários menores de 18 anos só podem registrar despesas.');
       return false;
     }
@@ -73,7 +98,7 @@ export function useTransactionForm({ users, onSubmit }: UseTransactionFormProps)
   const resetForm = () => {
     setDescricao('');
     setValor('');
-    setTipo('Despesa');  // Changed to uppercase
+    setTipo('Despesa');
     setUsuarioId(Array.isArray(users) && users.length > 0 ? users[0].id : 0);
   };
 
@@ -82,8 +107,8 @@ export function useTransactionForm({ users, onSubmit }: UseTransactionFormProps)
     setUsuarioId(userId);
     
     const user = userArray.find(u => u.id === userId);
-    if (user && user.age < 18) {
-      setTipo('Despesa');  // Changed to uppercase
+    if (user && calculateAge(user.dateOfBirth) < 18) {
+      setTipo('Despesa');
     }
   };
 

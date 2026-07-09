@@ -1,16 +1,3 @@
-import type { User } from '../../types';
-
-export const calculateAge = (birthDateStr: string): number => {
-  const birthDate = new Date(birthDateStr);
-  const today = new Date();
-  let age = today.getFullYear() - birthDate.getFullYear();
-  const monthDiff = today.getMonth() - birthDate.getMonth();
-  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-    age--;
-  }
-  return age;
-};
-
 export const validateUserForm = (nome: string, dataNascimento: string): string | null => {
   if (!nome.trim()) {
     return 'Por favor, preencha o nome.';
@@ -18,15 +5,11 @@ export const validateUserForm = (nome: string, dataNascimento: string): string |
   if (!dataNascimento) {
     return 'Por favor, selecione uma data de nascimento.';
   }
+  const birthDate = new Date(dataNascimento);
+  if (birthDate > new Date()) {
+    return 'A data de nascimento não pode ser no futuro.';
+  }
   return null;
-};
-
-export const formatUserData = (nome: string, dataNascimento: string): Omit<User, 'id'> => {
-  const age = calculateAge(dataNascimento);
-  return {
-    fullName: nome.trim(),
-    age: age
-  };
 };
 
 export const getInitialFormState = () => ({

@@ -43,10 +43,17 @@ public class UserController : ControllerBase
     public async Task<IActionResult> CreateUser([FromBody] UserCreateDto userDto)
     {
         var newUser = await _userService.CreateUserAsync(userDto);
+        var response = new UserResponseDto
+        {
+            Id = newUser.Id,
+            Name = newUser.Name,
+            DateOfBirth = newUser.DateOfBirth,
+            Age = newUser.Age
+        };
         return CreatedAtAction(
             nameof(GetUserById), 
             new { id = newUser.Id }, 
-            newUser
+            response
         );
     }
 
@@ -75,7 +82,7 @@ public class UserController : ControllerBase
 
         await _userService.DeleteUserAsync(id);
 
-        // Cascade delete:
+        // Cascade delete transactions
         await _transactionService.DeleteTransactionsByUserAsync(id);
 
         return NoContent();

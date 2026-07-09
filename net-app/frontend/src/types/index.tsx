@@ -1,7 +1,8 @@
 export interface User {
   id: number;
   fullName: string;
-  age: number;
+  dateOfBirth: string;
+  age?: number;
 }
 
 export interface Transaction {
@@ -10,6 +11,7 @@ export interface Transaction {
   value: number;
   type: 'Receita' | 'Despesa';
   userId: number;
+  createdAt?: string;
 }
 
 export interface TransactionSummary {
@@ -17,3 +19,4 @@ export interface TransactionSummary {
   totalDespesas: number;
   saldo: number;
 }
+export type TabId = 'home' | 'usuarios' | 'transacoes' | 'totais';

@@ -70,29 +70,40 @@ public class TransactionController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateTransaction([FromBody] TransactionCreateDto transactionDto)
     {
-        var userExists = await _userService.UserExistsAsync(transactionDto.UserId);
-        if (!userExists)
+        try
         {
-            return BadRequest(new { message = $"User with ID {transactionDto.UserId} not found" });
+            var userExists = await _userService.UserExistsAsync(transactionDto.UserId);
+            if (!userExists)
+            {
+                return BadRequest(new { message = $"User with ID {transactionDto.UserId} not found" });
+            }
+
+            var newTransaction = await _transactionService.CreateTransactionAsync(transactionDto);
+
+            var user = await _userService.GetUserByIdAsync(newTransaction.UserId);
+            var result = new TransactionResponseDto
+            {
+                Id = newTransaction.Id,
+                Description = newTransaction.Description,
+                Value = newTransaction.Value,
+                Type = newTransaction.Type,
+                UserId = newTransaction.UserId,
+                UserName = user?.Name ?? "Unknown User"
+            };
+
+            return CreatedAtAction(
+                nameof(GetTransactionById), 
+                new { id = newTransaction.Id }, 
+                result
+            );
         }
-
-        var newTransaction = await _transactionService.CreateTransactionAsync(transactionDto);
-
-        var user = await _userService.GetUserByIdAsync(newTransaction.UserId);
-        var result = new TransactionResponseDto
+        catch (InvalidOperationException ex)
         {
-            Id = newTransaction.Id,
-            Description = newTransaction.Description,
-            Value = newTransaction.Value,
-            Type = newTransaction.Type,
-            UserId = newTransaction.UserId,
-            UserName = user?.Name ?? "Unknown User"
-        };
-
-        return CreatedAtAction(
-            nameof(GetTransactionById), 
-            new { id = newTransaction.Id }, 
-            result
-        );
+            return BadRequest(new { error = ex.Message });
+        }
+        catch (Exception)
+        {
+            return StatusCode(500, new { error = "An unexpected error occurred" });
+        }
     }
 }
