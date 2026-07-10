@@ -15,35 +15,35 @@ API backend do projeto netApp, construída com **.NET 8** e **Entity Framework C
 ## Estrutura do Projeto
 
 backend/netApp/
-├── Controllers/ # Controladores da API
-│ ├── UserController.cs # Endpoints de usuários
-│ └── TransactionController.cs # Endpoints de transações
-├── Services/ # Camada de serviços (lógica de negócio)
-│ ├── IUserService.cs # Interface de usuários
-│ ├── UserService.cs # Implementação de usuários
-│ ├── ITransactionService.cs # Interface de transações
-│ └── TransactionService.cs # Implementação de transações
-├── Models/ # Modelos de domínio
-│ ├── User.cs # Modelo de usuário
-│ └── Transaction.cs # Modelo de transação
-├── DTOs/ # Data Transfer Objects
-│ ├── UserCreateDto.cs # DTO de criação de usuário
-│ ├── UserUpdateDto.cs # DTO de atualização de usuário
-│ ├── UserResponseDto.cs # DTO de resposta de usuário
-│ ├── TransactionCreateDto.cs # DTO de criação de transação
-│ └── TransactionResponseDto.cs # DTO de resposta de transação
-├── Data/ # Contexto do banco de dados
-│ └── AppDbContext.cs # DbContext do Entity Framework
-│ └── SeedData.cs # Arquivo para popular o banco de dados com dados de teste
-├── Helpers/ # Classes auxiliares
-│ └── AgeHelper.cs # Cálculo de idade
-├── Migrations/ # Migrações do Entity Framework
-├── Properties/ # Configurações de projeto
-├── wwwroot/ # Arquivos estáticos (frontend compilado)
-├── Program.cs # Ponto de entrada da aplicação
-├── appsettings.json # Configurações da aplicação
-├── appsettings.Development.json # Configurações de desenvolvimento
-└── netApp.csproj # Arquivo de projeto
+├── Controllers/ # Controladores da API  
+│ ├── UserController.cs # Endpoints de usuários  
+│ └── TransactionController.cs # Endpoints de transações   
+├── Services/ # Camada de serviços (lógica de negócio)  
+│ ├── IUserService.cs # Interface de usuários  
+│ ├── UserService.cs # Implementação de usuários  
+│ ├── ITransactionService.cs # Interface de transações  
+│ └── TransactionService.cs # Implementação de transações  
+├── Models/ # Modelos de domínio  
+│ ├── User.cs # Modelo de usuário  
+│ └── Transaction.cs # Modelo de transação  
+├── DTOs/ # Data Transfer Objects  
+│ ├── UserCreateDto.cs # DTO de criação de usuário  
+│ ├── UserUpdateDto.cs # DTO de atualização de usuário  
+│ ├── UserResponseDto.cs # DTO de resposta de usuário  
+│ ├── TransactionCreateDto.cs # DTO de criação de transação  
+│ └── TransactionResponseDto.cs # DTO de resposta de transação  
+├── Data/ # Contexto do banco de dados  
+│ └── AppDbContext.cs # DbContext do Entity Framework  
+│ └── SeedData.cs # Arquivo para popular o banco de dados com dados de teste  
+├── Helpers/ # Classes auxiliares  
+│ └── AgeHelper.cs # Cálculo de idade  
+├── Migrations/ # Migrações do Entity Framework  
+├── Properties/ # Configurações de projeto  
+├── wwwroot/ # Arquivos estáticos (frontend compilado)  
+├── Program.cs # Ponto de entrada da aplicação  
+├── appsettings.json # Configurações da aplicação  
+├── appsettings.Development.json # Configurações de desenvolvimento  
+└── netApp.csproj # Arquivo de projeto  
 
 
 ## Arquitetura
