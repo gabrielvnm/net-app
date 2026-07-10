@@ -6,9 +6,9 @@ import { useTransactionForm } from './hooks/useTransactionForm';
 import type { Transaction, User } from '../../../types';
 import './Transacoes.css';
 
+// pagina com formulario para adicionar transações
 export default function Transacoes() {
 
-  
   const location = useLocation();
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
@@ -18,7 +18,7 @@ export default function Transacoes() {
   useEffect(() => {
     loadUsers();
     return () => {
-      console.log('🧹 Cleaning up Transacoes component');
+      console.log('Cleaning up Transacoes component');
     };
   }, [location.pathname]);
 
@@ -26,7 +26,7 @@ export default function Transacoes() {
     setLoading(true);
     setError(null);
     try {
-      const usersData = await userService.getUsers();
+      const usersData = await userService.getUsers(); // chamada api GET users
       setUsers(Array.isArray(usersData) ? usersData : []);
     } catch (err) {
       console.log(`❌ Transacoes loadUsers FAILED`);
@@ -42,7 +42,7 @@ export default function Transacoes() {
     setSuccessMessage(null);
     
     try {
-      await transactionService.createTransaction(data);
+      await transactionService.createTransaction(data); // chamada api POST transaction
       setSuccessMessage('✅ Transação adicionada com sucesso!');
       await loadUsers();
       

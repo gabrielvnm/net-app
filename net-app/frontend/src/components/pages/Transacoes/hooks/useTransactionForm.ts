@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import type { User } from '../../../../types';
 
+// hook para formulario de adicionar transações
 interface UseTransactionFormProps {
   users: User[];
   onSubmit: (data: {
@@ -10,7 +11,7 @@ interface UseTransactionFormProps {
     userId: number;
   }) => void;
 }
-
+// função de calcular idade, no momento o backend faz o calculo, mas mantive por questões de compatibilidade
 const calculateAge = (dateOfBirth: string): number => {
   const birthDate = new Date(dateOfBirth);
   const today = new Date();
@@ -29,7 +30,6 @@ export function useTransactionForm({ users, onSubmit }: UseTransactionFormProps)
   const [usuarioId, setUsuarioId] = useState<number>(0);
   const [showSuccess, setShowSuccess] = useState(false);
 
-  // Update usuarioId when users array changes
   useEffect(() => {
     const userArray = Array.isArray(users) ? users : [];
     if (userArray.length > 0) {
@@ -45,9 +45,9 @@ export function useTransactionForm({ users, onSubmit }: UseTransactionFormProps)
   const userArray = Array.isArray(users) ? users : [];
   const selectedUser = userArray.find(u => u.id === usuarioId);
   
-  // Calculate age from dateOfBirth
   const isUnder18 = selectedUser ? calculateAge(selectedUser.dateOfBirth) < 18 : false;
 
+  // validators do formulario, também há uma validação no backend
   const validateForm = () => {
     if (!descricao.trim()) {
       alert('Por favor, preencha a descrição.');

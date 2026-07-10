@@ -1,3 +1,4 @@
+// pagina inicial
 import './Home.css';
 
 export default function HomePage() {
@@ -20,7 +21,7 @@ export default function HomePage() {
         <div className="home-card">
           <span className="home-card-icon">💵</span>
           <h3>Transações</h3>
-          <p>Acompanhe todas as transações em tempo real</p>
+          <p>Adicione novas transações</p>
         </div>
       </div>
     </section>

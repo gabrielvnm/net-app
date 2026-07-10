@@ -1,3 +1,4 @@
+// componente para exibir em rotas inválidas
 import { Link } from 'react-router-dom';
 import './NotFound.css';
 

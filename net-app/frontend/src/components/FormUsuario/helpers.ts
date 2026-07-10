@@ -1,3 +1,5 @@
+// funções helpers para usar no formulario de adicionar usuário
+// validator, o backend também faz a validação
 export const validateUserForm = (nome: string, dataNascimento: string): string | null => {
   if (!nome.trim()) {
     return 'Por favor, preencha o nome.';

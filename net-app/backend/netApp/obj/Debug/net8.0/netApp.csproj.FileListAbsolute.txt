@@ -127,3 +127,4 @@
 /home/gvnm/Code/net-app/backend/netApp/obj/Debug/net8.0/netApp.pdb
 /home/gvnm/Code/net-app/backend/netApp/obj/Debug/net8.0/netApp.genruntimeconfig.cache
 /home/gvnm/Code/net-app/backend/netApp/obj/Debug/net8.0/ref/netApp.dll
+/home/gvnm/Code/net-app/backend/netApp/bin/Debug/net8.0/netApp.staticwebassets.runtime.json

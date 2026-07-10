@@ -7,6 +7,7 @@ import {
 } from './helpers';
 import './FormUsuario.css';
 
+// componente de formulário para adicionar novos usuários
 interface FormUsuarioProps {
   onUserAdded: (userData: Omit<User, 'id'>) => void;
 }
@@ -19,13 +20,11 @@ export function FormUsuario({ onUserAdded }: FormUsuarioProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const error = validateUserForm(nome, dataNascimento);
+    const error = validateUserForm(nome, dataNascimento); // validator helper
     if (error) {
       alert(error);
       return;
     }
-
-    // Send date directly - backend calculates age
     const userData = {
       fullName: nome.trim(),
       dateOfBirth: dataNascimento

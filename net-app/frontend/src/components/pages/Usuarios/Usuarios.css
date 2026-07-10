@@ -19,7 +19,6 @@
   font-size: 1.05rem;
 }
 
-/* Form Container - matches your existing CSS */
 .form-container {
   display: none;
   margin: 1.5rem 0;
@@ -90,23 +89,23 @@
   border-bottom: none;
 }
 
-/* User ID column */
+
 .user-table td:first-child {
   color: #6ba3ff;
   font-weight: 500;
 }
 
-/* User Name column */
+
 .user-table td:nth-child(2) {
   color: #e0e8f0;
 }
 
-/* User Age column */
+
 .user-table td:last-child {
   color: #b6ceff;
 }
 
-/* Actions Container */
+
 .actions-container {
   display: flex;
   justify-content: center;
@@ -114,7 +113,7 @@
   padding: 1rem 0;
 }
 
-/* Add Button */
+
 .btn-add {
   padding: 0.8rem 2.5rem;
   font-size: 1rem;
@@ -191,19 +190,19 @@
   transform: translateY(-1px);
 }
 
-/* Edit form appears below the table with some spacing */
+
 .edit-form-container {
   margin-top: 2rem;
   border-top: 2px solid #1e2a3a;
   padding-top: 1.5rem;
 }
 
-/* Optional: Add a small indicator when editing */
+
 .edit-form-container .form-header h3::before {
   content: '✏️ ';
 }
 
-/* Make the edit form stand out with a different border */
+
 .edit-form-container {
   border-left: 4px solid #2b6ef0;
 }

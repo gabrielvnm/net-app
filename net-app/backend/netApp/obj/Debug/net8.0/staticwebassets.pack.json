@@ -1,0 +1,89 @@
+{
+  "Files": [
+    {
+      "Id": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/Home-DhdPxoUX.css",
+      "PackagePath": "staticwebassets/assets/Home-DhdPxoUX.css"
+    },
+    {
+      "Id": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/Home-OWJEvTTm.js",
+      "PackagePath": "staticwebassets/assets/Home-OWJEvTTm.js"
+    },
+    {
+      "Id": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/NotFound-DnxNAmEu.js",
+      "PackagePath": "staticwebassets/assets/NotFound-DnxNAmEu.js"
+    },
+    {
+      "Id": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/NotFound-DtEHI27V.css",
+      "PackagePath": "staticwebassets/assets/NotFound-DtEHI27V.css"
+    },
+    {
+      "Id": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/Totais-Bq-TfdEP.js",
+      "PackagePath": "staticwebassets/assets/Totais-Bq-TfdEP.js"
+    },
+    {
+      "Id": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/Totais-ymuWSc6y.css",
+      "PackagePath": "staticwebassets/assets/Totais-ymuWSc6y.css"
+    },
+    {
+      "Id": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/Transacoes-CaGpccZn.css",
+      "PackagePath": "staticwebassets/assets/Transacoes-CaGpccZn.css"
+    },
+    {
+      "Id": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/Transacoes-dD0pk8-0.js",
+      "PackagePath": "staticwebassets/assets/Transacoes-dD0pk8-0.js"
+    },
+    {
+      "Id": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/Usuarios-ChNvMdF4.css",
+      "PackagePath": "staticwebassets/assets/Usuarios-ChNvMdF4.css"
+    },
+    {
+      "Id": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/Usuarios-wPxV-FlQ.js",
+      "PackagePath": "staticwebassets/assets/Usuarios-wPxV-FlQ.js"
+    },
+    {
+      "Id": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/index-CoJb-t6g.js",
+      "PackagePath": "staticwebassets/assets/index-CoJb-t6g.js"
+    },
+    {
+      "Id": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/index-e0UFf883.css",
+      "PackagePath": "staticwebassets/assets/index-e0UFf883.css"
+    },
+    {
+      "Id": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/transactionService-CrZspVPk.js",
+      "PackagePath": "staticwebassets/assets/transactionService-CrZspVPk.js"
+    },
+    {
+      "Id": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/userService-aZxoGiuT.js",
+      "PackagePath": "staticwebassets/assets/userService-aZxoGiuT.js"
+    },
+    {
+      "Id": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/favicon.svg",
+      "PackagePath": "staticwebassets/favicon.svg"
+    },
+    {
+      "Id": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/icons.svg",
+      "PackagePath": "staticwebassets/icons.svg"
+    },
+    {
+      "Id": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/index.html",
+      "PackagePath": "staticwebassets/index.html"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.netApp.props",
+      "PackagePath": "build\\netApp.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.netApp.props",
+      "PackagePath": "buildMultiTargeting\\netApp.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.netApp.props",
+      "PackagePath": "buildTransitive\\netApp.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.netApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

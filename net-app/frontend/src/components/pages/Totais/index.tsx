@@ -4,6 +4,8 @@ import { userService } from '../../../services/userService';
 import type { Transaction, User } from '../../../types';
 import './Totais.css';
 
+// página com resumo de transações
+
 export default function Totais() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [users, setUsers] = useState<User[]>([]);
@@ -20,8 +22,8 @@ export default function Totais() {
     setError(null);
     try {
       const [transactionsData, usersData] = await Promise.all([
-        transactionService.getTransactions(),
-        userService.getUsers(),
+        transactionService.getTransactions(), // chamada para api de transações
+        userService.getUsers(), // chamada para api de usuarios
       ]);
       setTransactions(transactionsData);
       setUsers(usersData);
@@ -38,8 +40,8 @@ export default function Totais() {
     setError(null);
     try {
       const data = await transactionService.getTransactionsFiltered(
-        filters.userId ? parseInt(filters.userId) : undefined,
-        filters.type as 'Receita' | 'Despesa' | undefined
+        filters.userId ? parseInt(filters.userId) : undefined, // filtro por id de usuário
+        filters.type as 'Receita' | 'Despesa' | undefined // filtro por tipo de transação
       );
       setTransactions(data);
     } catch (err) {
@@ -62,6 +64,7 @@ export default function Totais() {
     setFilters({ ...filters, [key]: value });
   };
 
+  // calculos com os valores filtrados para exibir no topo da tela
   const totalReceitas = transactions
     .filter(t => t.type === 'Receita')
     .reduce((sum, t) => sum + t.value, 0);
@@ -93,7 +96,6 @@ export default function Totais() {
         <span className="highlight">despesas</span>
       </p>
 
-      {/* Summary Cards */}
       <div className="summary-cards">
         <div className="panel-card card-receita">
           <div className="card-label">💰 Receitas</div>
@@ -115,7 +117,6 @@ export default function Totais() {
         </div>
       </div>
 
-      {/* Filters */}
       <div className="filters-container">
         <div className="filters-header">
           <span className="filters-title">🔍 Filtrar transações</span>
@@ -164,7 +165,6 @@ export default function Totais() {
         </div>
       </div>
 
-      {/* Transactions Table */}
       <div className="transactions-container">
         <div className="transactions-header">
           <span className="transactions-title">📋 Transações</span>
@@ -204,7 +204,6 @@ export default function Totais() {
                         R$ {transaction.value.toFixed(2)}
                       </td>
                       <td>
-                        {/* Simply use transaction.type as the class name */}
                         <span className={`badge badge-${transaction.type}`}>
                           {transaction.type}
                         </span>

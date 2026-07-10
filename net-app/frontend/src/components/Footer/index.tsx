@@ -7,7 +7,7 @@ export function Footer() {
   return (
     <footer className="app-footer">
       <div className="copyright">
-        &copy; {currentYear} <span className="brand">NET-APP</span> · all rights reserved
+        &copy; {currentYear} <span className="brand">NET-APP</span> Aplicação criada por Gabriel Martins · todos os direitos reservados
       </div>
       <div className="contact">
         <span>📧</span> 
