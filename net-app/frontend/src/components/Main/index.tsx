@@ -1,3 +1,4 @@
+// componente wrapper para o conteúdo principal, renderiza o componente da rota atual
 import { Suspense } from 'react';
 import { useRoutes } from 'react-router-dom';
 import { routes } from '../../routes';

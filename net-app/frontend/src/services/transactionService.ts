@@ -1,7 +1,8 @@
+// serviço de transações, com as chamadas de api
 import { api } from './api';
 import type { Transaction } from '../types';
 
-// Map API response 
+// mapa dos modelos backend para o front
 const mapTransaction = (transaction: any): Transaction => ({
   id: transaction.id,
   description: transaction.description,

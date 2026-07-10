@@ -1,3 +1,4 @@
+// arquivo main simples apenas com chamadas para os outros componentes de acordo com o router
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Header } from './components/Header';
 

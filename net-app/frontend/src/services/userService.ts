@@ -1,3 +1,4 @@
+// serviço de usuarios, com as chamadas de api para o back
 import { api } from './api';
 import type { User } from '../types';
 

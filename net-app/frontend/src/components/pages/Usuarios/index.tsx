@@ -5,6 +5,7 @@ import { userService } from '../../../services/userService';
 import type { User } from '../../../types';
 import './Usuarios.css';
 
+// pagina de usuarios, exibe lista de usuarios cadastrados
 export default function Usuarios() {
   const [showAddForm, setShowAddForm] = useState(false);
   const [editingUser, setEditingUser] = useState<User | null>(null);
@@ -16,7 +17,7 @@ export default function Usuarios() {
     setLoading(true);
     setError(null);
     try {
-      const data = await userService.getUsers();
+      const data = await userService.getUsers(); // chamada para api GET all
       setUsers(data);
     } catch (err) {
       setError('Erro ao carregar usuários');
@@ -32,7 +33,7 @@ export default function Usuarios() {
 
   const handleAddUser = async (userData: Omit<User, 'id'>) => {
     try {
-      await userService.createUser(userData);
+      await userService.createUser(userData); // chamada para POST user
       await loadUsers();
       setShowAddForm(false);
     } catch (error) {
@@ -43,7 +44,7 @@ export default function Usuarios() {
 
   const handleUpdateUser = async (id: number, userData: Omit<User, 'id'>) => {
     try {
-      await userService.updateUser(id, userData);
+      await userService.updateUser(id, userData); // chamada para PATCH user
       await loadUsers();
       setEditingUser(null);
     } catch (error) {
@@ -55,7 +56,7 @@ export default function Usuarios() {
   const handleDeleteUser = async (id: number) => {
     if (window.confirm('Tem certeza que deseja excluir este usuário?')) {
       try {
-        await userService.deleteUser(id);
+        await userService.deleteUser(id); // chamada para DELETE user
         await loadUsers();
       } catch (error) {
         console.error('Failed to delete user:', error);
@@ -95,6 +96,7 @@ export default function Usuarios() {
       </div>
       <p>Listagem, adicionar, remover ou editar usuários.</p>
 
+      {/* botão toggle para componente de formulário para adicionar usuario */}
       {showAddForm && <FormUsuario onUserAdded={handleAddUser} />}
 
       {loading && <p>Carregando usuários...</p>}
@@ -123,7 +125,7 @@ export default function Usuarios() {
                   <tr key={user.id}>
                     <td>#{user.id}</td>
                     <td>{user.fullName}</td>
-                    <td>{user.age} anos</td>  {/* age is calculated by backend */}
+                    <td>{user.age} anos</td>
                     <td>
                       <button 
                         onClick={() => handleEditUser(user)} 
@@ -147,7 +149,7 @@ export default function Usuarios() {
           {users.length === 0 && (
             <p>Nenhum usuário cadastrado.</p>
           )}
-
+          {/* componente de formulario para editar usuario */}
           {editingUser && (
             <EditUsuario 
               user={editingUser}

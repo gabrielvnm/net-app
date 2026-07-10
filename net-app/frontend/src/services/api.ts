@@ -1,5 +1,6 @@
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5092';
 
+// serviço de api principal, definindo os metodos para usar nos endpoints
 export const api = {
   async get<T>(endpoint: string): Promise<T> {
     const response = await fetch(`${API_URL}${endpoint}`);
@@ -24,7 +25,6 @@ export const api = {
     return response.json();
   },
 
-  // ADD PATCH METHOD
   async patch<T>(endpoint: string, data: any): Promise<T> {
     const response = await fetch(`${API_URL}${endpoint}`, {
       method: 'PATCH',
@@ -38,7 +38,6 @@ export const api = {
       throw new Error(errorData.message || `API Error: ${response.status}`);
     }
     
-    // Handle empty response (like 204 No Content)
     const contentLength = response.headers.get('content-length');
     const contentType = response.headers.get('content-type');
     
@@ -53,7 +52,6 @@ export const api = {
     return JSON.parse(text);
   },
 
-  // Keep PUT for backward compatibility, but mark as deprecated
   async put<T>(endpoint: string, data: any): Promise<T> {
     console.warn('⚠️ PUT method is deprecated, use PATCH instead');
     return this.patch<T>(endpoint, data);

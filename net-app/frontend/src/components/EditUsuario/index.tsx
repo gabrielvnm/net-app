@@ -6,6 +6,7 @@ import {
 } from '../FormUsuario/helpers';
 import './EditUsuario.css';
 
+// componente com o formulario de PATCH para usuários, a chamada de api é feita na pagina de usuários
 interface EditUsuarioProps {
   user: User;
   onUserUpdated: (id: number, userData: Omit<User, 'id'>) => void;

@@ -75,7 +75,6 @@
   margin: 0;
 }
 
-/* User Form */
 .user-form {
   display: flex;
   flex-direction: column;
@@ -136,7 +135,7 @@
   font-size: 0.95rem;
 }
 
-/* Input Hint */
+
 .input-hint {
   color: #5a6f8a;
   font-size: 0.8rem;
@@ -144,7 +143,7 @@
   padding-left: 0.2rem;
 }
 
-/* Form Actions */
+
 .form-actions {
   display: flex;
   gap: 1rem;

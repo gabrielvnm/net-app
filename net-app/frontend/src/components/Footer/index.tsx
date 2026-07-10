@@ -1,6 +1,7 @@
 
 import './Footer.css'
 
+// componente simples de rodapé
 export function Footer() {
   const currentYear = new Date().getFullYear();
   

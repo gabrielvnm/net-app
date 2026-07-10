@@ -1,8 +1,3 @@
-/* Totais Page */
-.totais-page {
-  /* Inherits from main-content */
-}
-
 .totais-page h2 {
   color: #b6ceff;
   font-weight: 500;
@@ -206,7 +201,6 @@
   color: #ff1744;
 }
 
-/* Utilities */
 .text-right {
   text-align: right;
 }
@@ -214,7 +208,6 @@
 .text-center {
   text-align: center;
 }
-/* Add to existing Totais.css */
 
 /* Filters Container */
 .filters-container {
