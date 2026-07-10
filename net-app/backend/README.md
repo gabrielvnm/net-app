@@ -10,7 +10,7 @@ API backend do projeto netApp, construída com **.NET 8** e **Entity Framework C
 | Entity Framework Core | 8.0 | ORM para acesso a dados |
 | SQLite | 3.x | Banco de dados |
 | ASP.NET Core | 8.0 | API RESTful |
-| Swagger/OpenAPI | - | Documentação da API (opcional) |
+| Swagger/OpenAPI | - | Documentação da API |
 
 ## Estrutura do Projeto
 
@@ -34,6 +34,7 @@ backend/netApp/
 │ └── TransactionResponseDto.cs # DTO de resposta de transação
 ├── Data/ # Contexto do banco de dados
 │ └── AppDbContext.cs # DbContext do Entity Framework
+│ └── SeedData.cs # Arquivo para popular o banco de dados com dados de teste
 ├── Helpers/ # Classes auxiliares
 │ └── AgeHelper.cs # Cálculo de idade
 ├── Migrations/ # Migrações do Entity Framework
@@ -73,7 +74,7 @@ O backend segue uma arquitetura em camadas (layers), separando responsabilidades
 - Separa os modelos de domínio da API
 - Controla quais dados são expostos
 
-## Passos para executar
+## Passos para execução
 
 Para executar o projeto localmente, é necessário instalar o SDK versão 8. A versão 9 pode funcionar, mas não foram realizados testes para confirmar.
 
@@ -93,7 +94,7 @@ Para utilizar uma porta específica, altere a url após a flagg --urls.
 
 ## Banco de dados
 
-Para utilizar o banco de dados SQLite corretamente, é necessário executar as migrations localmente:
+O projeto utiliza banco de dados SQLite, e as migrações e populações do banco devem ser executadas automaticamente ao realizar o build da aplicação. A persistência de dados é local, os dados serão mantidos ao parar a exeução da aplicação e executar novamente.
 
 
 ## API Endpoints
@@ -107,7 +108,7 @@ Para utilizar o banco de dados SQLite corretamente, é necessário executar as m
 | GET | `/users` | Get all users |
 | GET | `/users/{id}` | Get user by ID |
 | POST | `/users` | Create new user |
-| PAtCH | `/users/{id}` | Update user |
+| PATCH | `/users/{id}` | Update user |
 | DELETE | `/users/{id}` | Delete user (cascade deletes transactions) |
 
 ### Transactions

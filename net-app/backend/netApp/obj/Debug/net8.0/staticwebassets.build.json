@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "bQkmtiVTKIbRUSQDxhz+PQ4Dvu2nF8OBDfkK7qgJ8rQ=",
+  "Hash": "A1QO3dG2uOHx8m9bVD3awX1t8W4HOcMoaPmND1XYtu8=",
   "Source": "netApp",
   "BasePath": "_content/netApp",
   "Mode": "Default",
@@ -36,12 +36,12 @@
       "OriginalItemSpec": "wwwroot/assets/Home-DhdPxoUX.css"
     },
     {
-      "Identity": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/Home-OWJEvTTm.js",
+      "Identity": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/Home-Qas_CW4U.js",
       "SourceId": "netApp",
       "SourceType": "Discovered",
       "ContentRoot": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/",
       "BasePath": "_content/netApp",
-      "RelativePath": "assets/Home-OWJEvTTm.js",
+      "RelativePath": "assets/Home-Qas_CW4U.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -52,15 +52,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/assets/Home-OWJEvTTm.js"
+      "OriginalItemSpec": "wwwroot/assets/Home-Qas_CW4U.js"
     },
     {
-      "Identity": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/index-CoJb-t6g.js",
+      "Identity": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/index-Be2QVlh5.js",
       "SourceId": "netApp",
       "SourceType": "Discovered",
       "ContentRoot": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/",
       "BasePath": "_content/netApp",
-      "RelativePath": "assets/index-CoJb-t6g.js",
+      "RelativePath": "assets/index-Be2QVlh5.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -71,7 +71,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/assets/index-CoJb-t6g.js"
+      "OriginalItemSpec": "wwwroot/assets/index-Be2QVlh5.js"
     },
     {
       "Identity": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/index-e0UFf883.css",
@@ -93,25 +93,6 @@
       "OriginalItemSpec": "wwwroot/assets/index-e0UFf883.css"
     },
     {
-      "Identity": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/NotFound-DnxNAmEu.js",
-      "SourceId": "netApp",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/",
-      "BasePath": "_content/netApp",
-      "RelativePath": "assets/NotFound-DnxNAmEu.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/assets/NotFound-DnxNAmEu.js"
-    },
-    {
       "Identity": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/NotFound-DtEHI27V.css",
       "SourceId": "netApp",
       "SourceType": "Discovered",
@@ -131,12 +112,12 @@
       "OriginalItemSpec": "wwwroot/assets/NotFound-DtEHI27V.css"
     },
     {
-      "Identity": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/Totais-Bq-TfdEP.js",
+      "Identity": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/NotFound-OvPc_u9X.js",
       "SourceId": "netApp",
       "SourceType": "Discovered",
       "ContentRoot": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/",
       "BasePath": "_content/netApp",
-      "RelativePath": "assets/Totais-Bq-TfdEP.js",
+      "RelativePath": "assets/NotFound-OvPc_u9X.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -147,7 +128,26 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/assets/Totais-Bq-TfdEP.js"
+      "OriginalItemSpec": "wwwroot/assets/NotFound-OvPc_u9X.js"
+    },
+    {
+      "Identity": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/Totais-BjrPP7_k.js",
+      "SourceId": "netApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/",
+      "BasePath": "_content/netApp",
+      "RelativePath": "assets/Totais-BjrPP7_k.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/Totais-BjrPP7_k.js"
     },
     {
       "Identity": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/Totais-ymuWSc6y.css",
@@ -169,6 +169,25 @@
       "OriginalItemSpec": "wwwroot/assets/Totais-ymuWSc6y.css"
     },
     {
+      "Identity": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/Transacoes-BgprqbvW.js",
+      "SourceId": "netApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/",
+      "BasePath": "_content/netApp",
+      "RelativePath": "assets/Transacoes-BgprqbvW.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/Transacoes-BgprqbvW.js"
+    },
+    {
       "Identity": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/Transacoes-CaGpccZn.css",
       "SourceId": "netApp",
       "SourceType": "Discovered",
@@ -186,25 +205,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/assets/Transacoes-CaGpccZn.css"
-    },
-    {
-      "Identity": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/Transacoes-dD0pk8-0.js",
-      "SourceId": "netApp",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/",
-      "BasePath": "_content/netApp",
-      "RelativePath": "assets/Transacoes-dD0pk8-0.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/assets/Transacoes-dD0pk8-0.js"
     },
     {
       "Identity": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/transactionService-CrZspVPk.js",
@@ -264,12 +264,12 @@
       "OriginalItemSpec": "wwwroot/assets/Usuarios-ChNvMdF4.css"
     },
     {
-      "Identity": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/Usuarios-wPxV-FlQ.js",
+      "Identity": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/assets/Usuarios-DqimGT3L.js",
       "SourceId": "netApp",
       "SourceType": "Discovered",
       "ContentRoot": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/",
       "BasePath": "_content/netApp",
-      "RelativePath": "assets/Usuarios-wPxV-FlQ.js",
+      "RelativePath": "assets/Usuarios-DqimGT3L.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -280,7 +280,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/assets/Usuarios-wPxV-FlQ.js"
+      "OriginalItemSpec": "wwwroot/assets/Usuarios-DqimGT3L.js"
     },
     {
       "Identity": "/home/gvnm/Code/net-app/backend/netApp/wwwroot/favicon.svg",
