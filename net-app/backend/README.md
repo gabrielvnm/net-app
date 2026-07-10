@@ -15,7 +15,6 @@ API backend do projeto netApp, construída com **.NET 8** e **Entity Framework C
 ## Estrutura do Projeto
 
 backend/netApp/
-
 ├── Controllers/ # Controladores da API  
 
 │ ├── UserController.cs # Endpoints de usuários  
